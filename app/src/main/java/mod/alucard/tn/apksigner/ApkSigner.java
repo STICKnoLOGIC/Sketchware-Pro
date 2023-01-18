@@ -38,14 +38,7 @@ public class ApkSigner {
 
             List<String> args = Arrays.asList(
                     "sign",
-                    "--ks",
-                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "debugkey.p12").getAbsolutePath(),
-                    "--ks-pass",
-                    "pass:debugging",
-                    "--ks-key-alias",
-                    "debugging",
-                   // "--key-pass",
-                   // "pass:debugging",
+                   
                     "--in",
                     inputPath,
                     "--out",
@@ -53,7 +46,15 @@ public class ApkSigner {
                     "--key",
                     new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.pk8").getAbsolutePath(),
                     "--cert",
-                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.x509.pem").getAbsolutePath()
+                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.x509.pem").getAbsolutePath(),
+"--ks",
+                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "debugkey.p12").getAbsolutePath(),
+                    "--ks-pass",
+                    "pass:debugging",
+                    "--ks-key-alias",
+                    "debugging",
+                    "--key-pass",
+                    "pass:debugging"
             );
 
             logger.write("Signing an APK file with these arguments: " + args);
