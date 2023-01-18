@@ -50,10 +50,10 @@ public class ApkSigner {
                     inputPath,
                     "--out",
                     outputPath,
-                    "--key",
-                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.pk8").getAbsolutePath(),
-                    "--cert",
-                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.x509.pem").getAbsolutePath()
+              //      "--key",
+                 //   new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.pk8").getAbsolutePath(),
+                //    "--cert",
+                  //  new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.x509.pem").getAbsolutePath()
             );
 
             logger.write("Signing an APK file with these arguments: " + args);
