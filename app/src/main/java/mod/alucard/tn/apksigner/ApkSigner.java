@@ -44,16 +44,16 @@ public class ApkSigner {
                     "pass:debugging",
                     "--ks-key-alias",
                     "debugging",
-                    "--key-pass",
-                    "pass:debugging",
+                   // "--key-pass",
+                   // "pass:debugging",
                     "--in",
                     inputPath,
                     "--out",
                     outputPath,
-              //      "--key",
-                 //   new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.pk8").getAbsolutePath(),
-                //    "--cert",
-                  //  new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.x509.pem").getAbsolutePath()
+                    "--key",
+                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.pk8").getAbsolutePath(),
+                    "--cert",
+                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.x509.pem").getAbsolutePath()
             );
 
             logger.write("Signing an APK file with these arguments: " + args);
