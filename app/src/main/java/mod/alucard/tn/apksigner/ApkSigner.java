@@ -47,8 +47,10 @@ public class ApkSigner {
                     "--key-pass",
                     "pass:debugging",
                     "--in",
+                   "--pass-encoding utf8",
                     inputPath,
                     "--out",
+                    "-v",
                     outputPath
             );
 
