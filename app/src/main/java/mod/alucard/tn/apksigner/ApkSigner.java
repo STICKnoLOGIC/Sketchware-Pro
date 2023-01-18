@@ -38,23 +38,18 @@ public class ApkSigner {
 
             List<String> args = Arrays.asList(
                     "sign",
-                   
-                    "--in",
-                    inputPath,
-                    "--out",
-                    outputPath,
-                  //  "--key",
-                  //  new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.pk8").getAbsolutePath(),
-                  //  "--cert",
-                  //  new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.x509.pem").getAbsolutePath(),
-"--ks",
-                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "debugkey.p12").getAbsolutePath(),
+                    "--ks",
+                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "debugkeystore.jks").getAbsolutePath(),
                     "--ks-pass",
                     "pass:debugging",
                     "--ks-key-alias",
                     "debugging",
                     "--key-pass",
-                    "pass:debugging"
+                    "pass:debugging",
+                    "--in",
+                    inputPath,
+                    "--out",
+                    outputPath
             );
 
             logger.write("Signing an APK file with these arguments: " + args);
