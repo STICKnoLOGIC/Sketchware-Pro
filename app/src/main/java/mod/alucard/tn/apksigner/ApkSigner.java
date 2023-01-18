@@ -20,6 +20,10 @@ public class ApkSigner {
 
     private static final File EXTRACTED_TESTKEY_FILES_DIRECTORY = new File(BuiltInLibraries.EXTRACTED_COMPILE_ASSETS_PATH, "testkey");
 
+
+/*fix by STICKnoLOGIC
+** Signing an APK with testkey is now blocked by play protect while installing
+**to fix it, we need to sign it using a debug key*/
     /**
      * Sign an APK with testkey.
      *
@@ -34,6 +38,14 @@ public class ApkSigner {
 
             List<String> args = Arrays.asList(
                     "sign",
+                    "--ks",
+                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "debugkey.p12").getAbsolutePath(),
+                    "--ks-pass",
+                    "pass:debugging",
+                    "--ks-key-alias",
+                    "debugging",
+                    "--key-pass",
+                    "pass:debugging",
                     "--in",
                     inputPath,
                     "--out",
