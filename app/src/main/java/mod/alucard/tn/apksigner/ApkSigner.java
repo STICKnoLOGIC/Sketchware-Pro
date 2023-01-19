@@ -38,7 +38,14 @@ public class ApkSigner {
 
             List<String> args = Arrays.asList(
                     "sign",
-                    "--ks",
+                  
+                    "--in",
+             
+                    inputPath,
+                    "--out",
+                    
+                    outputPath,
+"--ks",
                     new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "debugkeystore.jks").getAbsolutePath(),
                     "--ks-pass",
                     "pass:debugging",
@@ -47,12 +54,6 @@ public class ApkSigner {
                     "--key-pass",
                     "pass:debugging",
                     "--pass-encoding", "utf8",
-                    "--in",
-             
-                    inputPath,
-                    "--out",
-                    
-                    outputPath,
 "-v"
             );
 
