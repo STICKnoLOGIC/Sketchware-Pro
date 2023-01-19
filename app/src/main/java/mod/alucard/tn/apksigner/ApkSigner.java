@@ -46,11 +46,11 @@ public class ApkSigner {
                     
                     outputPath,
 "--ks",
-                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.keystore").getAbsolutePath(),
+                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.jks").getAbsolutePath(),
                   "--ks-pass",
                  "pass:testkey",
                   "--ks-key-alias",
-                   "debug",
+                   "testkey",
                   "--key-pass",
                    "pass:testkey",
                    // "--pass-encoding", "utf8",
