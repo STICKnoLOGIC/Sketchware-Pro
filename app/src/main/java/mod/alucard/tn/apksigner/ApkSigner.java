@@ -48,11 +48,12 @@ public class ApkSigner {
                     "pass:debugging",
                     "--pass-encoding", "utf8",
                     "--in",
-               
+             
                     inputPath,
                     "--out",
-                    "-v",
-                    outputPath
+                    
+                    outputPath,
+"-v"
             );
 
             logger.write("Signing an APK file with these arguments: " + args);
