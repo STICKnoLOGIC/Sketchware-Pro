@@ -816,11 +816,14 @@ public class ExportProjectActivity extends BaseAppCompatActivity {
                         return;
                     }
 
-/*fix: while signing app, and where it is aligning, it makes the apk corrupted
-*fix by STICKnoLOGIC
-Caution: If you sign your APK using apksigner and make further changes to the APK, the APK's signature is invalidated. If you use zipalign to align your APK, use it before signing the APK.
-src:https://developer.android.com/studio/command-line/apksigner
-*/
+                /**
+                 * Fix: while signing app, and where it is aligning, it makes the apk corrupted
+                 *fix by STICKnoLOGIC
+                 * Caution: If you sign your APK using apksigner and make further changes to the APK,
+                 * the APK's signature is invalidated. If you use zipalign to align your APK,
+                 * use it before signing the APK.
+                 * src:https://developer.android.com/studio/command-line/apksigner
+                **/
                     publishProgress("Aligning APK...");
                     dp.runZipalign(dp.yq.unsignedUnalignedApkPath,dp.yq.unalignedSignedApkPath);
                     
@@ -833,7 +836,7 @@ src:https://developer.android.com/studio/command-line/apksigner
                     if (signWithTestkey) {
                         ZipSigner signer = new ZipSigner();
                         signer.setKeymode(ZipSigner.KEY_TESTKEY);
-                        signer.signZip( dp.yq.unalignedSignedApkPath, //unsigned and aligned
+                        signer.signZip( dp.yq.unalignedSignedApkPath, //unsigned and aligned naming, too lazy to edit, too scared that I would break the whole code *tee-hee*
                         getCorrectResultFilename(dp.yq.releaseApkPath));
                     } else if (isResultJarSigningEnabled()) {
                         Security.addProvider(new BouncyCastleProvider());
