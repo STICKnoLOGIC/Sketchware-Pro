@@ -19,12 +19,16 @@ import mod.jbk.build.BuiltInLibraries;
 public class ApkSigner {
 
     private static final File EXTRACTED_TESTKEY_FILES_DIRECTORY = new File(BuiltInLibraries.EXTRACTED_COMPILE_ASSETS_PATH, "testkey");
+    private static String key="testkey"; //for short and easy to replace
 
-
-/*fix by STICKnoLOGIC
-** Signing an APK with testkey is now blocked by play protect while installing
-**to fix it, we need to sign it using a debug key*/
     /**
+     * Fix by STICKnoLOGIC
+     * Signing an APK with testkey or cert+pem is now blocked by play protect while installing
+     * to fix it, we need to sign it using a debug/test key
+     * although time will come where this key will be flagged by google as "untrustable key" same as the cert and above-mentioned
+     * it will serve it well and do its work,
+     * SIDE EFFECT: it needs to clear cache (for those who will install the later version)
+     * and need to uninstall the application build by the later version since the conflict on signature
      * Sign an APK with testkey.
      *
      * @param inputPath  The APK file to sign
@@ -38,23 +42,18 @@ public class ApkSigner {
 
             List<String> args = Arrays.asList(
                     "sign",
-                  
                     "--in",
-             
                     inputPath,
                     "--out",
-                    
                     outputPath,
-"--ks",
-                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, "testkey.jks").getAbsolutePath(),
-                  "--ks-pass",
-                 "pass:testkey",
-                  "--ks-key-alias",
-                   "testkey",
-                  "--key-pass",
-                   "pass:testkey",
-                   // "--pass-encoding", "utf8",
-"-v"
+                    "--ks",
+                    new File(EXTRACTED_TESTKEY_FILES_DIRECTORY, key+".jks").getAbsolutePath(),
+                    "--ks-pass",
+                    "pass:"+key,
+                    "--ks-key-alias",
+                    key,
+                    "--key-pass",
+                    "pass:"+key
             );
 
             logger.write("Signing an APK file with these arguments: " + args);
